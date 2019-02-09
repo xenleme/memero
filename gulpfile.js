@@ -6,7 +6,7 @@ const sass = require('gulp-sass');
 sass.compiler = require('node-sass');
 
 gulp.task('uglifyJS', () => {
-  return gulp.src('src/*.js')
+  return gulp.src('public/js/*.js')
     .pipe(uglify())
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('./public/js'));
