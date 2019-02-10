@@ -1,15 +1,13 @@
 const gulp = require('gulp');
-const uglify = require("gulp-uglify");
-const rename = require('gulp-rename');
+const minify = require('gulp-minify');
 const sass = require('gulp-sass');
 
 sass.compiler = require('node-sass');
 
-gulp.task('uglifyJS', () => {
-  return gulp.src('public/js/*.js')
-    .pipe(uglify())
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('./public/js'));
+gulp.task('uglifyJS', function() {
+  return gulp.src('src/js/*.js')
+    .pipe(minify())
+    .pipe(gulp.dest('./public/js'))
 });
 
 gulp.task('sass', () => {
