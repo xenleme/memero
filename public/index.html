@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Memero - simple meme generator</title>
+</head>
+<body>
+  <div class="container">
+    <div class="text-inputs">
+      <input type="text" id="text-top">
+      <input type="text" id="text-bottom">
+    </div>
+
+    <div class="range-inputs">
+      Top text size:
+      <input type="range" id="text-top-size-input" min="0.05" max="0.25" value="0.15" step="0.01">
+      Bottom text size:
+      <input type="range" id="text-bottom-size-input" min="0.05" max="0.25" value="0.15" step="0.01">
+    </div>
+
+    <div class="load-image">
+      <input type="file" id="file-input" accept="image/*">
+    </div>
+
+    <div class="generate-meme">
+      <button id="generate-meme-btn">Get meme</button>
+    </div>
+
+    <div class="meme-output">
+      <canvas id="meme-canvas"></canvas>
+    </div>
+  </div>
+</body>
+</html>
