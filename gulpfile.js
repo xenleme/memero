@@ -13,13 +13,13 @@ gulp.task('uglifyJS', () => {
 });
 
 gulp.task('sass', () => {
-  return gulp.src('memero/src/sass/**/*.sass')
+  return gulp.src('./src/sass/*.sass')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./public/css'));
 });
  
 gulp.task('sass:watch', () => {
-  gulp.watch('memero/src/sass/**/*.sass', ['sass']);
+  gulp.watch('./src/sass/*.sass', ['sass']);
 });
 
 // Default task
