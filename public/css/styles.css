@@ -29,3 +29,10 @@ body {
   padding: 5px 11px;
   border-radius: 4px;
   cursor: pointer; }
+  .generate-meme button:hover {
+    background-color: #59d68e; }
+
+.meme-output {
+  margin-top: 25px; }
+  .meme-output canvas {
+    max-width: 300px; }
