@@ -5,7 +5,7 @@ const sass = require('gulp-sass');
 sass.compiler = require('node-sass');
 
 gulp.task('uglifyJS', function() {
-  return gulp.src('src/js/*.js')
+  return gulp.src('public/js/*.js')
     .pipe(minify())
     .pipe(gulp.dest('./public/js'))
 });
