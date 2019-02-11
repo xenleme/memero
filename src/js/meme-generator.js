@@ -1,4 +1,4 @@
-let textTopInput, textBottomInput, textTopSizeInput, textBottomSizeInput, imageInput, generateBtn, memeCanvas, ctx;
+let textTopInput, textBottomInput, textSizeInput, imageInput, generateBtn, memeCanvas, ctx;
 
 const setTextFontSize = (fontSize) => {
   ctx.font = fontSize + 'px Impact';
@@ -13,7 +13,7 @@ const setTextStyle = () => {
   return ctx;
 }
 
-const generateMeme = (img, textTop, textBottom, textTopSize, textBottomSize) => {
+const generateMeme = (img, textTop, textBottom, textSize) => {
     let fontSize;
 
     memeCanvas.width = img.width;
@@ -23,11 +23,8 @@ const generateMeme = (img, textTop, textBottom, textTopSize, textBottomSize) => 
     ctx.drawImage(img, 0, 0);
 
     setTextStyle();
-
-    fontSize = memeCanvas.width * textTopSize;
-    setTextFontSize(fontSize);
     
-    fontSize = memeCanvas.width * textBottomSize;
+    fontSize = memeCanvas.width * textSize;
     setTextFontSize(fontSize);
 
     // Draw top text
@@ -49,8 +46,7 @@ const init = () => {
     // Initialize variables
     textTopInput = document.getElementById('text-top');
     textBottomInput = document.getElementById('text-bottom');
-    textTopSizeInput = document.getElementById('text-top-size-input');
-    textBottomSizeInput = document.getElementById('text-bottom-size-input');
+    textSizeInput = document.getElementById('text-size-input');
     fileInput = document.getElementById('file-input');
     generateMemeBtn = document.getElementById('generate-meme-btn');
     memeCanvas = document.getElementById('meme-canvas');
@@ -64,7 +60,7 @@ const init = () => {
         reader.onload = () => {
           const img = new Image;
           img.src = reader.result;
-          generateMeme(img, textTopInput.value, textBottomInput.value, textTopSizeInput.value, textBottomSizeInput.value);
+          generateMeme(img, textTopInput.value, textBottomInput.value, textSizeInput.value);
         };
         reader.readAsDataURL(fileInput.files[0]);
     });

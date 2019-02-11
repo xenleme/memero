@@ -1,4 +1,6 @@
-var textTopInput, textBottomInput, textTopSizeInput, textBottomSizeInput, imageInput, generateBtn, memeCanvas, ctx;
+"use strict";
+
+var textTopInput, textBottomInput, textSizeInput, imageInput, generateBtn, memeCanvas, ctx;
 
 var setTextFontSize = function setTextFontSize(fontSize) {
   ctx.font = fontSize + 'px Impact';
@@ -13,16 +15,14 @@ var setTextStyle = function setTextStyle() {
   return ctx;
 };
 
-var generateMeme = function generateMeme(img, textTop, textBottom, textTopSize, textBottomSize) {
+var generateMeme = function generateMeme(img, textTop, textBottom, textSize) {
   var fontSize;
   memeCanvas.width = img.width;
   memeCanvas.height = img.height;
   ctx.clearRect(0, 0, memeCanvas.width, memeCanvas.height);
   ctx.drawImage(img, 0, 0);
   setTextStyle();
-  fontSize = memeCanvas.width * textTopSize;
-  setTextFontSize(fontSize);
-  fontSize = memeCanvas.width * textBottomSize;
+  fontSize = memeCanvas.width * textSize;
   setTextFontSize(fontSize); // Draw top text
 
   ctx.textBaseline = 'top';
@@ -43,8 +43,7 @@ var init = function init() {
   // Initialize variables
   textTopInput = document.getElementById('text-top');
   textBottomInput = document.getElementById('text-bottom');
-  textTopSizeInput = document.getElementById('text-top-size-input');
-  textBottomSizeInput = document.getElementById('text-bottom-size-input');
+  textSizeInput = document.getElementById('text-size-input');
   fileInput = document.getElementById('file-input');
   generateMemeBtn = document.getElementById('generate-meme-btn');
   memeCanvas = document.getElementById('meme-canvas');
@@ -56,7 +55,7 @@ var init = function init() {
     reader.onload = function () {
       var img = new Image();
       img.src = reader.result;
-      generateMeme(img, textTopInput.value, textBottomInput.value, textTopSizeInput.value, textBottomSizeInput.value);
+      generateMeme(img, textTopInput.value, textBottomInput.value, textSizeInput.value);
     };
 
     reader.readAsDataURL(fileInput.files[0]);
