@@ -1,5 +1,10 @@
 $get-meme-btn-bg-color: #82E0AA
 $get-meme-btn-text-color: white
+$download-meme-btn-bg-color: #F9E79F
+$download-meme-btn-text-color: black
+
+*
+  outline: none
 
 body
   font-family: Helvetica, Arial, sans-serif
@@ -24,19 +29,32 @@ body
 .range-inputs
   font-size: .8em
 
-.generate-meme
-  button
-    background-color: $get-meme-btn-bg-color
-    color: $get-meme-btn-text-color
+.btns
+  button, a
     text-transform: uppercase
     margin-top: 7px
     padding: 5px 11px
     border-radius: 4px
     cursor: pointer
-    &:hover
-      background-color: darken($get-meme-btn-bg-color, 10%);
+
+#generate-meme-btn
+  background-color: $get-meme-btn-bg-color
+  color: $get-meme-btn-text-color
+  &:hover
+    background-color: darken($get-meme-btn-bg-color, 10%);
+
+#download-btn
+  background-color: $download-meme-btn-bg-color
+  color: $download-meme-btn-text-color
+  font-size: .7em
+  text-decoration: none
+  &:hover
+    background-color: darken($download-meme-btn-bg-color, 10%);
 
 .meme-output
   margin-top: 25px
   canvas
     max-width: 300px
+
+#download-btn
+  display: none

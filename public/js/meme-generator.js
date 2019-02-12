@@ -1,6 +1,4 @@
-"use strict";
-
-var textTopInput, textBottomInput, textSizeInput, imageInput, generateBtn, memeCanvas, ctx;
+var textTopInput, textBottomInput, textSizeInput, imageInput, generateBtn, memeCanvas, ctx, downloadBtn;
 
 var setTextFontSize = function setTextFontSize(fontSize) {
   ctx.font = fontSize + 'px Impact';
@@ -13,6 +11,11 @@ var setTextStyle = function setTextStyle() {
   ctx.strokeStyle = 'black';
   ctx.fillStyle = 'white';
   return ctx;
+};
+
+var downloadMeme = function downloadMeme(el) {
+  var image = memeCanvas.toDataURL("image/jpg");
+  el.href = image;
 };
 
 var generateMeme = function generateMeme(img, textTop, textBottom, textSize) {
@@ -47,8 +50,8 @@ var init = function init() {
   fileInput = document.getElementById('file-input');
   generateMemeBtn = document.getElementById('generate-meme-btn');
   memeCanvas = document.getElementById('meme-canvas');
+  downloadBtn = document.getElementById('download-btn');
   ctx = memeCanvas.getContext('2d');
-  memeCanvas.width = memeCanvas.height = 0;
   generateMemeBtn.addEventListener('click', function () {
     var reader = new FileReader();
 
@@ -56,6 +59,10 @@ var init = function init() {
       var img = new Image();
       img.src = reader.result;
       generateMeme(img, textTopInput.value, textBottomInput.value, textSizeInput.value);
+
+      if (memeCanvas.width > "0") {
+        downloadBtn.style.display = 'inline';
+      }
     };
 
     reader.readAsDataURL(fileInput.files[0]);
