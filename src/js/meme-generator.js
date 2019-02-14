@@ -47,6 +47,14 @@ const generateMeme = (img, textTop, textBottom, textSize) => {
   });
 }
 
+const checkFileSize = (fileInput) => {
+  if(fileInput.files[0].size > 307200){
+    alert("File is too big. Select a smaller file.");
+  } else {
+    return fileInput.files[0];
+  }
+}
+
 const init = () => {
   // Initialize variables
   textTopInput = document.getElementById('text-top');
@@ -70,7 +78,7 @@ const init = () => {
           downloadBtn.style.display = 'inline';
         }
       };
-      reader.readAsDataURL(fileInput.files[0]);
+      reader.readAsDataURL(checkFileSize(fileInput));
   });
 }
 

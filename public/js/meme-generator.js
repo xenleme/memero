@@ -42,6 +42,14 @@ var generateMeme = function generateMeme(img, textTop, textBottom, textSize) {
   });
 };
 
+var checkFileSize = function checkFileSize(fileInput) {
+  if (fileInput.files[0].size > 307200) {
+    alert("File is too big. Select a smaller file.");
+  } else {
+    return fileInput.files[0];
+  }
+};
+
 var init = function init() {
   // Initialize variables
   textTopInput = document.getElementById('text-top');
@@ -65,7 +73,7 @@ var init = function init() {
       }
     };
 
-    reader.readAsDataURL(fileInput.files[0]);
+    reader.readAsDataURL(checkFileSize(fileInput));
   });
 };
 
